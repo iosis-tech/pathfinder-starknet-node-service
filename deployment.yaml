@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pathfinder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pathfinder
+  template:
+    metadata:
+      labels:
+        app: pathfinder
+    spec:
+      containers:
+      - name: pathfinder
+        image: eqlabs/pathfinder
+        ports:
+        - containerPort: 9545
+        volumeMounts:
+        - name: pathfinder-data
+          mountPath: /usr/share/pathfinder/data
+        env:
+        - name: RUST_LOG
+          valueFrom:
+            configMapKeyRef:
+              name: pathfinder-config
+              key: RUST_LOG
+        - name: PATHFINDER_RPC_ROOT_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: pathfinder-config
+              key: PATHFINDER_RPC_ROOT_VERSION
+        - name: PATHFINDER_NETWORK
+          valueFrom:
+            configMapKeyRef:
+              name: pathfinder-config
+              key: PATHFINDER_NETWORK
+        - name: PATHFINDER_ETHEREUM_API_URL
+          valueFrom:
+            secretKeyRef:
+              name: pathfinder-secret
+              key: PATHFINDER_ETHEREUM_API_URL
+      volumes:
+      - name: pathfinder-data
+        persistentVolumeClaim:
+          claimName: pathfinder-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pathfinder-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 9545
+    protocol: TCP
+    name: http
+  selector:
+    app: pathfinder

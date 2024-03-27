@@ -1,0 +1,37 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pathfinder-http
+spec:
+  parentRefs:
+  - name: nginx-production-gateway
+    namespace: nginx-production-gateway
+    sectionName: iosis-tech-http
+  hostnames:
+  - "pathfinder.iosis.tech"
+  rules:
+  - filters:
+    - type: RequestRedirect
+      requestRedirect:
+        scheme: https
+        port: 443
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: pathfinder-https
+spec:
+  parentRefs:
+  - name: nginx-production-gateway
+    namespace: nginx-production-gateway
+    sectionName: iosis-tech-https
+  hostnames:
+  - "pathfinder.iosis.tech"
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: pathfinder-svc
+      port: 80
