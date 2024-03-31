@@ -58,3 +58,27 @@ spec:
     name: http
   selector:
     app: pathfinder
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pathfinder-ingress
+  annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 0
+spec:
+  ingressClassName: nginx-ingress-prod
+  tls:
+    - hosts:
+        - pathfinder.sepolia.iosis.tech
+      secretName: pathfinder-sepolia-tls
+  rules:
+    - host: pathfinder.sepolia.iosis.tech
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pathfinder-svc
+                port:
+                  number: 80

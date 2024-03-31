@@ -1,12 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: iosis-tech-pathfinder
+namespace: iosis-tech-sepolia-pathfinder
 
 resources:
   - deployment.yaml
+  - issuer.yaml
+  - certificates.yaml
   - pvc.yaml
-  - routes.yaml
 
 configMapGenerator:
   - name: pathfinder-config
@@ -20,6 +21,6 @@ configMapGenerator:
 secretGenerator:
   - name: pathfinder-secret
     envs:
-      - env.secret
+      - secret.env
     options:
       disableNameSuffixHash: true
