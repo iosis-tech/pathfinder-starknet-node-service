@@ -7,7 +7,7 @@ resources:
   - deployment.yaml
   - issuer.yaml
   - certificates.yaml
-  - pvc.yaml
+  # - pvc.yaml
 
 configMapGenerator:
   - name: pathfinder-config
