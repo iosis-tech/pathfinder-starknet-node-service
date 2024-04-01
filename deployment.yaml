@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pathfinder
-        image: eqlabs/pathfinder
+        image: eqlabs/pathfinder:v0.11.4
         ports:
         - containerPort: 9545
         volumeMounts:
@@ -64,15 +64,15 @@ kind: Ingress
 metadata:
   name: pathfinder-ingress
   annotations:
-      nginx.ingress.kubernetes.io/proxy-body-size: 0
+    nginx.ingress.kubernetes.io/proxy-body-size: 0
 spec:
   ingressClassName: nginx-ingress-prod
   tls:
     - hosts:
-        - pathfinder.sepolia.iosis.tech
-      secretName: pathfinder-sepolia-tls
+        - pathfinder.mainnet.iosis.tech
+      secretName: pathfinder-mainnet-tls
   rules:
-    - host: pathfinder.sepolia.iosis.tech
+    - host: pathfinder.mainnet.iosis.tech
       http:
         paths:
           - path: /
