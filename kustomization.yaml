@@ -7,7 +7,7 @@ resources:
   - deployment.yaml
   - issuer.yaml
   - certificates.yaml
-  # - pvc.yaml
+  - pvc.yaml
 
 configMapGenerator:
   - name: pathfinder-config
@@ -15,6 +15,7 @@ configMapGenerator:
       - RUST_LOG=info
       - PATHFINDER_RPC_ROOT_VERSION=v07
       - PATHFINDER_NETWORK=sepolia-testnet
+      - PATHFINDER_GATEWAY_REQUEST_TIMEOUT=1000
     options:
       disableNameSuffixHash: true
 
