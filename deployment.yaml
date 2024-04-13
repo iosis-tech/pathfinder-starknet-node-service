@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pathfinder
-        image: eqlabs/pathfinder:v0.11.4
+        image: eqlabs/pathfinder:v0.11.6
         ports:
         - containerPort: 9545
         volumeMounts:
@@ -45,6 +45,8 @@ spec:
       - name: pathfinder-data
         persistentVolumeClaim:
           claimName: pathfinder-pvc
+      securityContext: 
+        fsGroup: 7777
 ---
 apiVersion: v1
 kind: Service

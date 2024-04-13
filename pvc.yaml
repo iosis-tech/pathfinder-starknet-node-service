@@ -3,9 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: pathfinder-pvc
 spec:
-  storageClassName: topolvm-provisioner
+  storageClassName: rook-ceph-ec-hdd-block
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 700Gi
+      storage: 2000Gi
