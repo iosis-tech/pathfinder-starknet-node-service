@@ -40,7 +40,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: pathfinder-secret
-              key: PATHFINDER_ETHEREUM_API_URL
+              key: ETHEREUM_MAINNET_API_URL
       volumes:
       - name: pathfinder-data
         persistentVolumeClaim:
