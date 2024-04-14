@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
       - name: busybox
-        image: busybox
+        image: ubuntu
         command:
           - sleep
-          - "3600"
+          - "36000000"
         volumeMounts:
         - name: pathfinder-data
-          mountPath: /data
+          mountPath: /usr/share/pathfinder/data
       volumes:
       - name: pathfinder-data
         persistentVolumeClaim:
