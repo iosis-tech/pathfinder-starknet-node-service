@@ -1,4 +1,3 @@
----
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -7,7 +6,7 @@ spec:
   secretName: pathfinder-mainnet-tls
 
   dnsNames:
-    - pathfinder.mainnet.iosis.tech
+  - pathfinder.mainnet.iosis.tech
   issuerRef:
     name: letsencrypt-http01
     kind: Issuer

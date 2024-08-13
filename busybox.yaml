@@ -17,8 +17,8 @@ spec:
       - name: busybox
         image: ubuntu
         command:
-          - sleep
-          - "36000000"
+        - sleep
+        - "36000000"
         volumeMounts:
         - name: pathfinder-data
           mountPath: /usr/share/pathfinder/data

@@ -4,23 +4,24 @@ kind: Kustomization
 namespace: iosis-tech-mainnet-pathfinder
 
 resources:
-  - deployment.yaml
-  - issuer.yaml
-  - certificates.yaml
-  - pvc.yaml
+- deployment.yaml
+- issuer.yaml
+- certificates.yaml
+- pvc.yaml
 
 configMapGenerator:
-  - name: pathfinder-config
-    literals:
-      - RUST_LOG=info
-      - PATHFINDER_RPC_ROOT_VERSION=v07
-      - PATHFINDER_NETWORK=mainnet
-    options:
-      disableNameSuffixHash: true
+- name: pathfinder-config
+  literals:
+  - RUST_LOG=info
+  - PATHFINDER_RPC_ROOT_VERSION=v07
+  - PATHFINDER_NETWORK=mainnet
+  - PATHFINDER_GATEWAY_REQUEST_TIMEOUT=10000
+  options:
+    disableNameSuffixHash: true
 
 secretGenerator:
-  - name: pathfinder-secret
-    envs:
-      - secret.env
-    options:
-      disableNameSuffixHash: true
+- name: pathfinder-secret
+  envs:
+  - secret.env
+  options:
+    disableNameSuffixHash: true

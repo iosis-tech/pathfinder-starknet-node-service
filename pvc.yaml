@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: topolvm-provisioner
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   resources:
     requests:
       storage: 2000Gi
