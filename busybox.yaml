@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: busybox-deployment
-  namespace: iosis-tech-sepolia-pathfinder
+  namespace: iosis-tech-sepolia-starknet-node
 spec:
   replicas: 1
   selector:
