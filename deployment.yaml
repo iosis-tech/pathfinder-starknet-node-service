@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pathfinder
-        image: eqlabs/pathfinder:v0.16.2
+        image: eqlabs/pathfinder:v0.20.4
         ports:
         - containerPort: 9545
         volumeMounts:
