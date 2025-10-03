@@ -5,9 +5,9 @@ namespace: iosis-tech-mainnet-starknet-node
 
 resources:
 - deployment.yaml
-- issuer.yaml
-- certificates.yaml
-- pvc.yaml
+# - issuer.yaml
+# - certificates.yaml
+# - pvc.yaml
 
 configMapGenerator:
 - name: pathfinder-config
