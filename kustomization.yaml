@@ -12,8 +12,7 @@ resources:
 configMapGenerator:
 - name: pathfinder-config
   literals:
-  - RUST_LOG=info
-  - PATHFINDER_RPC_ROOT_VERSION=v07
+  - RUST_LOG=debug
   - PATHFINDER_NETWORK=mainnet
   - PATHFINDER_GATEWAY_REQUEST_TIMEOUT=10000
   options:

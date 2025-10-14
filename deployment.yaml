@@ -26,11 +26,6 @@ spec:
             configMapKeyRef:
               name: pathfinder-config
               key: RUST_LOG
-        - name: PATHFINDER_RPC_ROOT_VERSION
-          valueFrom:
-            configMapKeyRef:
-              name: pathfinder-config
-              key: PATHFINDER_RPC_ROOT_VERSION
         - name: PATHFINDER_NETWORK
           valueFrom:
             configMapKeyRef:
