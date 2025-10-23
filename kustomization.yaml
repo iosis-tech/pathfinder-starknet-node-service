@@ -12,7 +12,7 @@ resources:
 configMapGenerator:
 - name: pathfinder-config
   literals:
-  - RUST_LOG=debug
+  - RUST_LOG=info
   - PATHFINDER_NETWORK=sepolia-testnet
   - PATHFINDER_GATEWAY_REQUEST_TIMEOUT=10000
   options:
