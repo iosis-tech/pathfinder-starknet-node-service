@@ -15,6 +15,11 @@ spec:
       containers:
       - name: pathfinder
         image: eqlabs/pathfinder:v0.20.4
+        args:
+        - "--storage.state-tries"
+        - "archive"
+        - "--storage.blockchain-history"
+        - "archive"
         ports:
         - containerPort: 9545
         volumeMounts:
